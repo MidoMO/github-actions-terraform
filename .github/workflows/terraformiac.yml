@@ -12,8 +12,8 @@ on:
   workflow_dispatch:
 
 env:
-  STORAGE_ACCOUNT_NAME: storagetfstate013
-  RESOURCE_GROUP_NAME: rg-terraform-state
+  STORAGE_ACCOUNT_NAME: tfstatestg010
+  RESOURCE_GROUP_NAME: tf_state
   CONTAINER_NAME: tfstate
   BLOB_NAME: terraform.tfstate
   
