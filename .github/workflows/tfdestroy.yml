@@ -49,9 +49,9 @@ jobs:
         #terraform init
         
         # Either use the backend.tf file with the config inside or use the following command line
-          terraform init -backend-config="storage_account_name=tfstatestg010" \
-                         -backend-config="container_name=tfstate" \
-                         -backend-config="resource_group_name=tf_state"
+          terraform init -backend-config="storage_account_name=$tfstatestg010" \
+                         -backend-config="container_name=$tfstate" \
+                         -backend-config="resource_group_name=$tf_state"
   
 
     - name: Terraform destroy
