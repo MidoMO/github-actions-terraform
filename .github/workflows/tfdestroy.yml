@@ -10,11 +10,26 @@ jobs:
   scan-terraform-config:
     runs-on: ubuntu-latest
     steps:
+        # Checkout the repository to the GitHub Actions runner
+    - name: Checkout
+      uses: actions/checkout@v2
+                
+    - name: Login to Azure with Service Principal
+      uses: Azure/login@v1.4.3
+      with:
+        # Paste output of `az ad sp create-for-rbac` as value of secret variable: AZURE_CREDENTIALS
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+        resource_group_name: tf_state
+        container_name: tfstate
+        storage_account_name: tfstatestg010
+        file_name: terraform.tftstate
+    
     # Install the latest version of Terraform CLI
     - name: Install Terraform
       uses: hashicorp/setup-terraform@v1
       with:
         terraform_version: 1.1.7
+
     
     - name: Terraform Init
       id: init
