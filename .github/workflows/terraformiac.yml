@@ -2,11 +2,11 @@ name: 'Create Infra with Terraform'
 
 on:
   push:
-    branches: none
-    # - main
+    branches:
+    - main
   pull_request: 
-    branches: none
-    # - main
+    branches:
+    - main
     
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -75,7 +75,7 @@ jobs:
         inlineScript: |
           az version
           # Create resource group
-          az group create --name $RESOURCE_GROUP_NAME --location westeurope
+          az group create --name $RESOURCE_GROUP_NAME --location canadacentral
           
           # Create storage account
           az storage account create --name $STORAGE_ACCOUNT_NAME \
