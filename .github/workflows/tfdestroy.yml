@@ -52,8 +52,19 @@ jobs:
         # terraform init -backend-config="storage_account_name=$tfstatestg010" \
                          -backend-config="container_name=$tfstate" \
                          -backend-config="resource_group_name=$tf_state"
-    - name: Terraform Destro
-      run: terraform Destroy -auto-approve
+    - name: 'Terraform Plan Destroy'
+      uses: hashicorp/terraform-github-actions@master
+      with:
+       tf_actions_version: latest
+       tf_actions_subcommand: 'plan'
+       args: '-destroy -out=./destroy-plan'
+    - name: 'Terraform Apply Destroy'
+      uses: hashicorp/terraform-github-actions@master
+      with:
+       tf_actions_version: latest
+       tf_actions_subcommand: 'apply'  
+       args: './destroy-plan'
+
 
 
 
