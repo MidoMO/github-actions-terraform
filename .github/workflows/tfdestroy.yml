@@ -46,11 +46,17 @@ jobs:
       run: |
         # Initialize a new or existing Terraform working directory by creating initial files, 
         # loading any remote state, downloading modules, etc.
-        #terraform init
+        terraform init
         
         # Either use the backend.tf file with the config inside or use the following command line
-          terraform init -backend-config="storage_account_name=$tfstatestg010" \
+        # terraform init -backend-config="storage_account_name=$tfstatestg010" \
                          -backend-config="container_name=$tfstate" \
                          -backend-config="resource_group_name=$tf_state"
+    - name: Terraform Destroy
+      uses: MidoMO/github-actions-moe@v1
+      with: 
+        path: 05_Web_Sql_database\main.tf
+      run: terraform Destroy -auto-approve
+
 
 
