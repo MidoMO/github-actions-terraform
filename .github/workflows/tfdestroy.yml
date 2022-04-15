@@ -18,6 +18,9 @@ jobs:
       uses: Azure/login@v1.4.3
       with:
         # Paste output of `az ad sp create-for-rbac` as value of secret variable: AZURE_CREDENTIALS
+    - name: Terraform init azurerm backend
+      uses: actions/checkout@v2
+      with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
         resource_group_name: tf_state
         container_name: tfstate
