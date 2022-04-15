@@ -52,10 +52,7 @@ jobs:
         # terraform init -backend-config="storage_account_name=$tfstatestg010" \
                          -backend-config="container_name=$tfstate" \
                          -backend-config="resource_group_name=$tf_state"
-    - name: Terraform Destroy
-      uses: MidoMO/github-actions-moe@v1
-      with: 
-        path: 05_Web_Sql_database\main.tf
+    - name: Terraform Destro
       run: terraform Destroy -auto-approve
 
 
